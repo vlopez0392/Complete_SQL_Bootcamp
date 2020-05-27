@@ -27,6 +27,7 @@ ORDER BY SUM(amount) ASC -- Notice we need to add the aggregate function here ag
 
 
 -- Example 4: Counting the total number of transactions a customer has. 
+
 SELECT customer_id, COUNT(amount)
 FROM payment 
 GROUP BY customer_id 
@@ -35,12 +36,14 @@ ORDER BY COUNT(amount) DESC
 
 -- Example 5: Using GROUP BY on multiple columns
 -- Grouping by customer_id and staff_id - How much did it each customer spend with each staff member?
+
 SELECT customer_id, staff_id, SUM(amount) -- Order of selection is irrelevant 
 FROM payment 
 GROUP BY staff_id, customer_id --Order of grouping is relevant! Staff per customer
 ORDER BY customer_id 
 
 -- Example 6: Reversing the GROUP BY order (Display varies)
+
 SELECT customer_id, staff_id, SUM(amount)
 FROM payment 
 GROUP BY customer_id, staff_id --Customer per staff
